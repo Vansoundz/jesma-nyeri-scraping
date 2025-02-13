@@ -1,9 +1,11 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from '../components/Navbar';
 import axios from "axios";
-import ProgressBar from "@/components/progress-bar";
+import ClientWrapper from "@/components/ClientWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,9 +34,10 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-amber-50`}
       >
-        <ProgressBar />
-        <Navbar links={links?.data || []} />
-        {children}
+        <ClientWrapper>
+          <Navbar links={links?.data || []} />
+          {children}
+        </ClientWrapper>
       </body>
     </html>
   );

@@ -12,12 +12,18 @@ export default function ProgressBar() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    NProgress.done();
-  }, [pathname, searchParams]);
+    if (typeof window !== "undefined") {
+      NProgress.start();
+      const timer = setTimeout(() => {
+        NProgress.done();
+      }, 500); // Ensure smooth loading effect
 
-  useEffect(() => {
-    NProgress.start();
-  }, []);
+      return () => {
+        clearTimeout(timer);
+        NProgress.done();
+      };
+    }
+  }, [pathname, searchParams]);
 
   return null;
 }
