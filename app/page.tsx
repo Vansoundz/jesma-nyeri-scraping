@@ -11,13 +11,13 @@ export default async function Home({
 
   const [locations, listings] = await Promise.all([
     (
-      await axios.get<{ data: string[] }>("http://localhost:3000/api/locations")
+        await axios.get<{ data: string[] }>(
+          process.env.NEXT_PUBLIC_API_URL + "/api/locations"
+      )
     ).data,
     (
       await axios.get<{ data: IProperty[] }>(
-        `http://localhost:3000/api/listings${
-          !!location ? "?location=" + location : ""
-        }`
+        process.env.NEXT_PUBLIC_API_URL + "/api/listings" + (!!location ? "?location=" + location : "")
       )
     ).data,
   ]);

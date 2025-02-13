@@ -25,7 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const links = (await axios.get("http://localhost:3000/api/links")).data;
+  const links = (await axios.get(process.env.NEXT_PUBLIC_API_URL + "/api/links")).data;
   
   return (
     <html lang="en">
