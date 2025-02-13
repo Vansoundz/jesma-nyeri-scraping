@@ -2,7 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* Customize nprogress */
+#nprogress .bar {
+  background: #29d; /* Change the color of the progress bar */
+  height: 6px; /* Change the height of the progress bar */
+  top: 0;
+  z-index: 1000;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d; /* Change the shadow color */
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #29d;
+  border-left-color: #29d;
+}
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -18,4 +35,4 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
