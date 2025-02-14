@@ -7,7 +7,6 @@ export async function GET(request: NextRequest) {
 
   const location = searchParams.get('location')
   // Navigate the page to a URL.
-  console.log(`https://www.jesmaestates.com/search?estate=${location}`);
   let response;
   if (location) {
     response = await axios.get(`https://www.jesmaestates.com/search?estate=${location}`);
